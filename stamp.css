@@ -10,29 +10,97 @@
   gap: 20px;
   margin-top: 20px;
 }
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ffeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+/* Pura Stamp Book Grid */
+#stampBook {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
 .stamp-card {
-background-image: url('taj-mahal.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.stamp-card{
-  border: 3px dashed #ff8c42;
-  border-radius: 15px;
+  height: 160px;
+  border-radius: 16px;
   padding: 20px;
-  background: white;
-  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative;
+  overflow: hidden;
+  border: 2px dashed #ffbfa3;
   cursor: pointer;
+  transition: all 0.4s ease;
 }
-.stamp-card.unlocked{
-  background: #fff3e0;
-  transform: rotate(-2deg);
+
+.stamp-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0;
+  z-index: 2;
 }
-.stamp-card.locked{
-  background: #e0e0e0;
-  opacity: 0.6;
+
+.stamp-card span {
+  font-size: 12px;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
 }
-.stamp-card:hover{ transform: scale(1.05) rotate(0deg); }
-.progress-bar{
-  width: 100%; height: 10px; background: #eee; border-radius: 10px; margin: 10px auto; max-width: 400px;
+
+/* UNLOCKED - Rangin aur Bright */
+.stamp-card.unlocked {
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-style: solid;
+  border-color: #ff8a5b;
 }
-.progress{ height: 100%; background: #ff8c42; border-radius: 10px; }
+.stamp-card.unlocked span {
+  background: rgba(255,255,255,0.9);
+  color: #d14a1e;
+  font-weight: 600;
+}
+
+/* LOCKED - Grey aur Dhundla */
+.stamp-card.locked {
+  color: #888;
+  background: #f2f2f2 !important;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  border-color: #ddd;
+}
+.stamp-card.locked span {
+  background: #e9e9e9;
+}
+
+/* Hover Effect - Judge ko ye bahut pasand aayega */
+.stamp-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== BACKGROUND IMAGES ===== */
+#taj { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500'); }
+#varanasi { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=500'); }
+#kerala { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500'); }
+#hawa { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500'); }
+#mysore { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=500'); }
+#goa { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500'); }
+#amritsar { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1583243536445-4e2a9fe64332?w=500'); }
+#ladakh { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=500'); }
+#kolkata { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1558431382-27e303142255?w=500'); }
+#statue { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500'); }
+#rameswaram { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500'); }
+#manali { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500'); }

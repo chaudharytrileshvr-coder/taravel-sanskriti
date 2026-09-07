@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore - Travel Sanskriti</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{font-family:'Poppins',sans-serif; margin:0; padding:0; box-sizing:border-box}
+  body{background:#fffaf5}
+ .header{padding:18px 7%; display:flex; justify-content:space-between; align-items:center; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.05); position:sticky; top:0; z-index:10}
+ .search-wrap{max-width:900px; margin:30px auto; padding:0 5%}
+ .search-bar{display:flex; gap:10px; background:white; padding:8px; border-radius:40px; box-shadow:0 8px 25px rgba(0,0,0,0.08); border:1px solid #e2e8f0}
+ .search-bar input{flex:1; padding:14px 20px; border:none; outline:none; font-size:14px; border-radius:40px}
+ .search-bar button{background:#e67e22; color:white; border:none; padding:12px 26px; border-radius:30px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px}
+ .ai-box{display:none; background:#1e293b; color:white; border-radius:16px; padding:20px; margin-top:15px; animation:fade 0.3s}
+  @keyframes fade{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+ .filters{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:20px 0 30px 0}
+ .filters span{background:white; border:1px solid #e2e8f0; padding:8px 18px; border-radius:20px; font-size:13px; cursor:pointer}
+ .filters.active{background:#1e293b; color:white}
+ .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; padding:0 7% 50px 7%}
+ .card{background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.06); transition:0.3s}
+ .card:hover{transform:translateY(-5px)}
+ .card img{width:100%; height:180px; object-fit:cover}
+ .card-body{padding:16px}
+ .card-body h3{font-size:16px}
+ .card-body p{font-size:12px; color:#64748b; margin:6px 0 12px 0; line-height:1.5}
+ .card-body button{width:100%; background:#fff7ed; border:1px solid #fed7aa; color:#ea580c; padding:10px; border-radius:8px; font-weight:700; cursor:pointer}
+ .card-body button.collected{background:#16a34a; color:white; border-color:#16a34a}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Travel <span style="color:#e67e22;">Sanskriti</span></h2>
+  <a href="index.html" style="text-decoration:none; background:#f1f5f9; padding:8px 16px; border-radius:20px; color:#1e293b; font-weight:600; font-size:13px;">← Home</a>
+</div>
+
+<div style="text-align:center; padding:25px 5% 10px 5%">
+  <h1 style="font-size:30px;">Explore Incredible India 🇮🇳</h1>
+  <p style="color:#64748b; font-size:13px; margin-top:5px;">Type karo - "best food in Jaipur" - AI khud guide karega</p>
+</div>
+
+<div class="search-wrap">
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Ask AI - jaise '2 din me Varanasi kaise ghume?'" onkeypress="if(event.key==='Enter') askAI()">
+    <button onclick="askAI()">✨ Ask AI</button>
+  </div>
+  <div id="aiBox" class="ai-box">
+    <div style="display:flex; gap:10px; align-items:start">
+      <div style="background:#e67e22; min-width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🤖</div>
+      <div>
+        <b style="font-size:13px; color:#fbbf24;">Sanskriti AI is answering...</b>
+        <p id="aiText" style="font-size:13px; margin-top:6px; line-height:1.6; color:#e2e8f0;"></p>
+        <div id="aiSuggest" style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="filters">
+  <span class="active" onclick="filterAll(this)">All</span>
+  <span onclick="filterBy('North',this)">North India</span>
+  <span onclick="filterBy('Heritage',this)">Heritage</span>
+  <span onclick="filterBy('Food',this)">Food</span>
+  <span onclick="filterBy('Spiritual',this)">Spiritual</span>
+</div>
+
+<div class="grid" id="grid">
+  <div class="card" data-tags="North Heritage Taj"><img src="https://images.unsplash.com/photo-1548013146-72479768bada"><div class="card-body"><h3>🕌 Taj Mahal, Agra</h3><p>Symbol of love. AI Tip: Sunrise par jao, bheed kam milegi. Budget: ₹1500/day</p><button onclick="collect(this,'Taj Mahal')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="North Spiritual Varanasi"><img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca"><div class="card-body"><h3>🛕 Varanasi Ghats</h3><p>Oldest city, Ganga Aarti. AI Tip: 2 din me Kashi Vishwanath + Sarnath ho jayega.</p><button onclick="collect(this,'Varanasi')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="North Heritage Jaipur"><img src="https://images.unsplash.com/photo-1599661046289-e31897846e41"><div class="card-body"><h3>🏰 Jaipur, Pink City</h3><p>Palaces, Forts. AI Tip: Dal Baati Churma try karna, LMB ke paas.</p><button onclick="collect(this,'Jaipur')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="South Kerala"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944"><div class="card-body"><h3>🌴 Kerala Backwaters</h3><p>Houseboats & Ayurveda. AI Tip: Alleppey me 1 night houseboat must hai.</p><button onclick="collect(this,'Kerala')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="North Ladakh"><img src="https://images.unsplash.com/photo-1583243536442-5929526a5d2c"><div class="card-body"><h3>🛶 Ladakh</h3><p>Land of high passes. AI Tip: June-Sept best hai, oxygen kam hota hai.</p><button onclick="collect(this,'Ladakh')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="Goa"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da"><div class="card-body"><h3>🏖️ Goa Beaches</h3><p>Sun & Portuguese Culture. AI Tip: North Goa party, South Goa peace.</p><button onclick="collect(this,'Goa')">+ Collect Stamp</button></div></div>
+  <div class="card" data-tags="south Food"><img src="https://media.istockphoto.com/id/1024558722/photo/group-of-south-indian-food-like-masala-dosa-uttapam-idli-idly-wada-vada-sambar-appam-semolina.webp?a=1&b=1&s=612x612&w=0&k=20&c=er4fLa3It5gEYaXuWz_kKb2WHjlqhur-dwc0vpYJyvo="><div class="card-body"><h3>🌴 south indian food</h3><p>Delicious South Indian cuisine. AI Tip: Try Dosa, Idli, and Vada for a authentic taste.</p><button onclick="collect(this,'food')">+ Collect Stamp</button></div></div>
+</div>
+
+<script>
+const knowledge = {
+  "varanasi": "Varanasi ke liye 2 din ka AI plan: Day 1 - Kashi Vishwanath Darshan, Ganga Aarti (Dashashwamedh Ghat). Day 2 - Sarnath, Banarasi Paan & Lassi. Budget ₹2000. Stamp collect karo!",
+  "jaipur": "Jaipur me 3 jagah must hai: Amber Fort (morning), Hawa Mahal, aur Chokhi Dhani for food. Dal Baati & Ghewar try karna. Cost ₹2500/day.",
+  "food": "Foodie ho? Jaipur me Dal Baati, Varanasi me Kachori-Sabzi & Lassi, Kerala me Appam & Fish Curry. Konsa city select karu?",
+  "taj": "Taj Mahal - Best time: Sunrise (5:30 AM). Ticket: ₹50 (Indian). Friday closed. AI tip: Agra Fort bhi same day kar sakte ho.",
+  "kerala": "Kerala - 3 din me Munnar (tea gardens), Alleppey (houseboat), Kochi (Fort Kochi). Budget ₹4000/day. Monsoon me greenery best hai."
+};
+
+function askAI(){
+  let q = document.getElementById("search").value.toLowerCase();
+  if(!q) return alert("Kuch type karo jaise - Varanasi kaise ghumu?");
+  let box = document.getElementById("aiBox");
+  let text = document.getElementById("aiText");
+  let sug = document.getElementById("aiSuggest");
+  box.style.display="block";
+  text.innerHTML = "Soch raha hu...";
+
+  setTimeout(()=>{
+    let ans = "Badhiya sawal! Main tumhare liye best plan bana raha hu. ";
+    for(let k in knowledge){ if(q.includes(k)){ ans = knowledge[k]; break; } }
+    if(ans.includes("Badhiya")) ans += "<br><br>💡 Try karo: 'Varanasi 2 din', 'Jaipur food', 'Taj Mahal ticket'";
+    text.innerHTML = ans;
+
+    // Filter cards based on query
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(c=>{ c.style.display = c.innerText.toLowerCase().includes(q) || c.dataset.tags.toLowerCase().includes(q)? "block" : "none"; });
+
+    sug.innerHTML = `<span onclick="quick('Varanasi')" style="background:#334155; padding:5px 12px; border-radius:20px; font-size:11px; cursor:pointer;">📍 Varanasi</span>
+                     <span onclick="quick('Jaipur food')" style="background:#334155; padding:5px 12px; border-radius:20px; font-size:11px; cursor:pointer;">🍛 Jaipur Food</span>
+                     <span onclick="quick('Taj Mahal')" style="background:#334155; padding:5px 12px; border-radius:20px; font-size:11px; cursor:pointer;">🕌 Taj</span>`;
+  },800);
+}
+function quick(t){ document.getElementById("search").value=t; askAI(); }
+function collect(btn, place){
+  btn.innerText="✓ Collected!"; btn.classList.add("collected");
+  let stamps = JSON.parse(localStorage.getItem("stamps") || "[]");
+  if(!stamps.includes(place)){ stamps.push(place); localStorage.setItem("stamps", JSON.stringify(stamps)); }
+}
+function filterAll(el){ document.querySelectorAll(".filters span").forEach(s=>s.classList.remove("active")); el.classList.add("active"); document.querySelectorAll(".card").forEach(c=>c.style.display="block"); }
+function filterBy(tag, el){ document.querySelectorAll(".filters span").forEach(s=>s.classList.remove("active")); el.classList.add("active"); document.querySelectorAll(".card").forEach(c=>{ c.style.display = c.dataset.tags.includes(tag)? "block" : "none"; }); }
+</script>
+</body>
+</html>

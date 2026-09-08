@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture - Travel Sanskriti AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif; margin:0; padding:0; box-sizing:border-box}
+body{background:#fffaf5; color:#1e293b}
+.header{padding:14px 7%; display:flex; justify-content:space-between; align-items:center; background:white; box-shadow:0 2px 15px rgba(0,0,0,0.06); position:sticky; top:0; z-index:10}
+.header h2{font-weight:800} .header h2 span{color:#e67e22}
+.nav a{margin-left:20px; text-decoration:none; color:#334155; font-weight:600; font-size:14px}
+.nav a.active{color:#e67e22; border-bottom:2px solid #e67e22; padding-bottom:3px}
+
+.hero{text-align:center; padding:50px 7% 30px 7%; background: linear-gradient(135deg,#fff7ed,#ffedd5);}
+.hero h1{font-size:38px; font-weight:800; line-height:1.2}
+.hero h1 span{color:#e67e22}
+.hero p{color:#64748b; max-width:700px; margin:12px auto; font-size:14px}
+
+.filters{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:25px 0}
+.filters button{padding:8px 18px; border-radius:20px; border:1px solid #e2e8f0; background:white; cursor:pointer; font-size:13px; font-weight:600}
+.filters button.active{background:#1e293b; color:white}
+
+.section-title{padding:10px 7%; font-size:22px; font-weight:700; margin-top:30px; display:flex; align-items:center; gap:10px}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; padding:15px 7% 30px 7%}
+
+.card{background:white; border-radius:18px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.06); transition:0.3s}
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%; height:190px; object-fit:cover}
+.card-body{padding:16px}
+.card-body .tag{display:inline-block; font-size:10px; padding:4px 10px; border-radius:20px; font-weight:700; margin-bottom:8px}
+.tag.festival{background:#fef3c7; color:#b45309}
+.tag.dance{background:#fce7f3; color:#be185d}
+.tag.music{background:#e0e7ff; color:#4338ca}
+.tag.art{background:#dcfce7; color:#15803d}
+.tag.arch{background:#ffedd5; color:#9a3412}
+.tag.tradition{background:#e0f2fe; color:#075985}
+.card-body h3{font-size:16px; margin-bottom:5px}
+.card-body p{font-size:12.5px; color:#64748b; line-height:1.6}
+.card-body .loc{font-size:11px; margin-top:8px; color:#94a3b8; font-weight:600}
+.card-body button{margin-top:12px; width:100%; padding:9px; border-radius:10px; border:1px solid #fed7aa; background:#fff7ed; color:#ea580c; font-weight:700; cursor:pointer}
+.card-body button:hover{background:#ea580c; color:white}
+
+.footer{text-align:center; padding:30px; background:#1e293b; color:#94a3b8; font-size:12px; margin-top:20px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Travel <span>Sanskriti</span> AI</h2>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="culture.html" class="active">Culture</a>
+    <a href="food.html">Food</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Discover the Soul of <span>Incredible India</span> 🇮🇳</h1>
+  <p>India is not just a country, it's a feeling. 28 States, 22 Languages, 100+ Dance forms, 1000+ Festivals - One Culture.</p>
+</div>
+
+<div class="filters">
+  <button class="active" onclick="filterCulture('all',this)">All</button>
+  <button onclick="filterCulture('festival',this)">🎉 Festivals</button>
+  <button onclick="filterCulture('dance',this)">💃 Dance</button>
+  <button onclick="filterCulture('music',this)">🎶 Music</button>
+  <button onclick="filterCulture('art',this)">🎨 Art & Craft</button>
+  <button onclick="filterCulture('arch',this)">🕌 Architecture</button>
+  <button onclick="filterCulture('tradition',this)">🪔 Traditions</button>
+</div>
+
+<h3 class="section-title">🎉 Festivals of India - Har Din Ek Tyohar</h3>
+<div class="grid">
+  <div class="card" data-type="festival"><img src="https://images.unsplash.com/photo-1577083753695-e010191bacb5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGl3YWxpfGVufDB8fDB8fHww"><div class="card-body"><span class="tag festival">FESTIVAL</span><h3>Diwali - Festival of Lights</h3><p>Deepo ka tyohar, Ayodhya se shuru hua, pure Bharat me manaya jata hai. Lakshmi Puja aur patakhe iski pehchan hain.</p><div class="loc">📍 Pan India | Oct-Nov</div><button onclick="collect('Diwali')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="festival"><img src="https://images.unsplash.com/photo-1468234847176-28606331216a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhvbGl8ZW58MHx8MHx8fDA%3D"><div class="card-body"><span class="tag festival">FESTIVAL</span><h3>Holi - Rangon ka Tyohar</h3><p>Mathura-Vrindavan ki Holi world famous hai. Bhang, gujiya aur rangon se bhara pyaar ka festival.</p><div class="loc">📍 Mathura, Vrindavan | March</div><button onclick="collect('Holi')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="festival"><img src="https://media.istockphoto.com/id/2233939440/photo/crowd-at-har-ki-pauri-ghat-in-haridwar-during-holy-ganga-bathing-ritual.webp?a=1&b=1&s=612x612&w=0&k=20&c=dFglKLLRRhSZ8fRbUYGPQ--nczR2ELzOPWgY1SQou5c="><div class="card-body"><span class="tag festival">FESTIVAL</span><h3>Kumbh Mela - World's Largest Gathering</h3><p>Har 12 saal me 4 jagah par lagta hai. UNESCO Heritage, 15 crore log aate hain.</p><div class="loc">📍 Prayagraj, Ujjain, Nashik, Haridwar</div><button onclick="collect('Kumbh Mela')">+ Add to Passport</button></div></div>
+</div>
+
+<h3 class="section-title">💃 Classical Dances - Nritya ki Parampara</h3>
+<div class="grid">
+  <div class="card" data-type="dance"><img src="https://images.unsplash.com/photo-1688820661462-a44e4b2770e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QmhhcmF0YW5hdHlhbXxlbnwwfHwwfHx8MA%3D%3D"><div class="card-body"><span class="tag dance">DANCE</span><h3>Bharatanatyam - Tamil Nadu</h3><p>2000 saal purana, mandir ki nartakiyon se shuru hua. Expressions aur mudras iski jaan hain.</p><div class="loc">📍 Tamil Nadu | Oldest Dance Form</div><button onclick="collect('Bharatanatyam')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="dance"><img src="https://images.unsplash.com/photo-1463592177119-bab2a00f3ccb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a2F0aGFrJTIwZGFuY2V8ZW58MHx8MHx8fDA%3D"><div class="card-body"><span class="tag dance">DANCE</span><h3>Kathak - North India</h3><p>Lucknow aur Jaipur gharana, ghungru aur chakkar iski pehchan. Mughal aur Hindu dono ka sangam.</p><div class="loc">📍 UP, Rajasthan | 7 Chakkar Record</div><button onclick="collect('Kathak')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="dance"><img src="https://images.unsplash.com/photo-1691075213372-ff9e2d6d7645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8S2F0aGFrYWxpfGVufDB8fDB8fHww"><div class="card-body"><span class="tag dance">DANCE</span><h3>Kathakali - Kerala</h3><p>Hara-bhara makeup aur bade aankhein. Mahabharat-Ramayana ki kahaniyan bina bole batata hai.</p><div class="loc">📍 Kerala | Green Makeup</div><button onclick="collect('Kathakali')">+ Add to Passport</button></div></div>
+</div>
+
+<h3 class="section-title">🎨 Art, Music & Architecture</h3>
+<div class="grid">
+  <div class="card" data-type="art"><img src="https://media.istockphoto.com/id/1604949860/photo/art-of-bhutanese-buddhist-temple.webp?a=1&b=1&s=612x612&w=0&k=20&c=WzBEtiJXUCpElwhNXzkC1I4OY7bT1y_uw3cq6w0n_L0="><div class="card-body"><span class="tag art">ART</span><h3>Madhubani Painting - Bihar</h3><p>Sita mata ke gaon se, natural colors se banta hai. Mithila ki mahilayen iski kalakar hain.</p><div class="loc">📍 Bihar | Natural Colors</div><button onclick="collect('Madhubani')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="music"><img src="https://media.istockphoto.com/id/140091632/photo/indian-classical-music-sitar.webp?a=1&b=1&s=612x612&w=0&k=20&c=JkhlVusTW8cnnVCraUWje9xfio9dqg6fB-TUJXuWD9Q="><div class="card-body"><span class="tag music">MUSIC</span><h3>Classical Music - Hindustani & Carnatic</h3><p>7 suron ka khel - Sa Re Ga Ma. Tabla, Sitar, Veena - duniya ko India ka tohfa.</p><div class="loc">📍 Pan India | 7 Swar</div><button onclick="collect('Classical Music')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="arch"><img src="https://images.unsplash.com/photo-1601815264039-67c8ba1a7f98?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8S29uYXJrfGVufDB8fDB8fHww"><div class="card-body"><span class="tag arch">ARCHITECTURE</span><h3>Temple Architecture - Khajuraho & Konark</h3><p>Nagara, Dravida, Vesara - 3 styles. Bina cement ke 1000 saal se khade hain.</p><div class="loc">📍 Khajuraho, Konark, Meenakshi</div><button onclick="collect('Temple Architecture')">+ Add to Passport</button></div></div>
+  <div class="card" data-type="tradition"><img src="https://images.unsplash.com/photo-1697898109117-cb8847116f8d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFlvZ2ElMjAlMjYlMjBBeXVydmVkYSUyMC0lMjA1MDAwJTIwWWVhcnMlMjBPbGR8ZW58MHx8MHx8fDA%3D"><div class="card-body"><span class="tag tradition">TRADITION</span><h3>Yoga & Ayurveda - 5000 Years Old</h3><p>Duniya ne India se liya. International Yoga Day - 21 June ko manaya jata hai.</p><div class="loc">📍 Rishikesh | UNESCO Heritage</div><button onclick="collect('Yoga')">+ Add to Passport</button></div></div>
+</div>
+
+<div class="footer">Made with ❤️ for SIH 2025 | Travel Sanskriti AI - One Country, Endless Cultures</div>
+
+<script>
+function filterCulture(type,btn){
+  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display = (type==='all' || c.dataset.type===type) ? 'block' : 'none';
+  });
+}
+function collect(name){
+  alert("🎉 "+name+" Culture Stamp Collected!");
+  let s = JSON.parse(localStorage.getItem("stamps")||"[]");
+  if(!s.includes(name)){ s.push(name); localStorage.setItem("stamps",JSON.stringify(s)); }
+}
+</script>
+</body>
+</html>

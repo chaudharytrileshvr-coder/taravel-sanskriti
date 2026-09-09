@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festival Calendar - Travel Sanskriti AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif; margin:0; padding:0; box-sizing:border-box}
+body{background:#fffaf5; color:#1e293b}
+.header{padding:14px 7%; display:flex; justify-content:space-between; align-items:center; background:white; box-shadow:0 2px 15px rgba(0,0,0,0.06); position:sticky; top:0; z-index:20}
+.header h2{font-weight:800} .header h2 span{color:#e67e22}
+.nav a{margin-left:18px; text-decoration:none; color:#334155; font-weight:600; font-size:13px}
+.nav a.active{color:#e67e22; border-bottom:2px solid #e67e22; padding-bottom:3px}
+
+.hero{text-align:center; padding:40px 7%; background:linear-gradient(135deg,#fff7ed,#ffedd5)}
+.hero h1{font-size:34px; font-weight:800} .hero h1 span{color:#e67e22}
+.hero p{color:#64748b; font-size:13px; margin-top:8px}
+
+.months{display:flex; gap:8px; overflow-x:auto; padding:15px 7%; scrollbar-width:none; position:sticky; top:60px; background:#fffaf5; z-index:10}
+.months::-webkit-scrollbar{display:none}
+.months button{min-width:90px; padding:10px; border-radius:12px; border:1px solid #e2e8f0; background:white; font-weight:700; font-size:13px; cursor:pointer}
+.months button.active{background:#1e293b; color:white; border-color:#1e293b}
+.months button small{display:block; font-size:10px; opacity:0.7; font-weight:400}
+
+.container{padding:10px 7% 40px 7%}
+.month-section{margin-top:35px}
+.month-head{display:flex; align-items:center; gap:12px; margin-bottom:15px}
+.month-head h2{font-size:22px; font-weight:800}
+.month-head .line{height:3px; flex:1; background:linear-gradient(90deg,#e67e22,transparent); border-radius:10px}
+.month-head span.count{background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:18px}
+.card{background:white; border-radius:18px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,0.05); border-left:5px solid #e67e22; display:flex; gap:14px; transition:0.3s}
+.card:hover{transform:translateY(-4px)}
+.card .date{min-width:60px; text-align:center; background:#fff7ed; border-radius:12px; padding:8px 5px; height:fit-content}
+.card .date b{font-size:20px; color:#e67e22; display:block} .card .date small{font-size:10px; font-weight:700; color:#92400e}
+.card-info h3{font-size:15px; margin-bottom:4px}
+.card-info p{font-size:11.5px; color:#64748b; line-height:1.5}
+.card-info .meta{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
+.meta span{font-size:10px; padding:4px 8px; border-radius:20px; font-weight:600}
+.loc{background:#e0f2fe; color:#075985} .type{background:#fce7f3; color:#9d174d} .state{background:#dcfce7; color:#166534}
+.add-btn{margin-top:10px; padding:6px 12px; border-radius:8px; border:1px solid #fed7aa; background:white; color:#e67e22; font-size:11px; font-weight:700; cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Travel <span>Sanskriti</span> AI</h2>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="culture.html">Culture</a>
+    <a href="calendar.html" class="active">Festival Calendar</a>
+    <a href="passport.html">Passport</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>🗓️ Bharat ka <span>Festival Calendar 2026</span></h1>
+  <p>12 Mahine, 12 Rang - Kab, Kahan aur Kaise manaye jate hain Bharat ke tyohar</p>
+</div>
+
+<div class="months" id="monthFilter">
+  <button class="active" onclick="scrollToMonth('all',this)"><small>ALL</small>Saare</button>
+  <button onclick="scrollToMonth('jan',this)"><small>JAN</small>January</button>
+  <button onclick="scrollToMonth('feb',this)"><small>FEB</small>February</button>
+  <button onclick="scrollToMonth('mar',this)"><small>MAR</small>March</button>
+  <button onclick="scrollToMonth('apr',this)"><small>APR</small>April</button>
+  <button onclick="scrollToMonth('may',this)"><small>MAY</small>May</button>
+  <button onclick="scrollToMonth('jun',this)"><small>JUN</small>June</button>
+  <button onclick="scrollToMonth('jul',this)"><small>JUL</small>July</button>
+  <button onclick="scrollToMonth('aug',this)"><small>AUG</small>August</button>
+  <button onclick="scrollToMonth('sep',this)"><small>SEP</small>September</button>
+  <button onclick="scrollToMonth('oct',this)"><small>OCT</small>October</button>
+  <button onclick="scrollToMonth('nov',this)"><small>NOV</small>November</button>
+  <button onclick="scrollToMonth('dec',this)"><small>DEC</small>December</button>
+</div>
+
+<div class="container">
+
+<!-- JANUARY -->
+<div class="month-section" id="jan"><div class="month-head"><h2>❄️ January - Makar Sankranti Month</h2><div class="line"></div><span class="count">3 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>14</b><small>JAN</small></div><div class="card-info"><h3>Makar Sankranti / Pongal</h3><p>Surya ka Uttarayan. Til-gud, patangbazi aur fasal ka tyohar.</p><div class="meta"><span class="loc">📍 Gujarat, Tamil Nadu</span><span class="state">Pan India</span><span class="type">Harvest</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>26</b><small>JAN</small></div><div class="card-info"><h3>Republic Day Parade</h3><p>Kartavya Path par Bharat ki sanskritik jhalak aur sena ka pradarshan.</p><div class="meta"><span class="loc">📍 New Delhi</span><span class="state">National</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>15</b><small>JAN</small></div><div class="card-info"><h3>Bikaner Camel Festival</h3><p>Rajasthan ka rang-biranga camel dance aur folk music.</p><div class="meta"><span class="loc">📍 Bikaner</span><span class="state">Rajasthan</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+<!-- FEBRUARY -->
+<div class="month-section" id="feb"><div class="month-head"><h2>🌸 February - Vasant Utsav</h2><div class="line"></div><span class="count">2 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>08</b><small>FEB</small></div><div class="card-info"><h3>Maha Shivratri</h3><p>Shiv ji ki raat. 12 Jyotirling par raat bhar abhishek.</p><div class="meta"><span class="loc">📍 Varanasi, Ujjain</span><span class="state">Pan India</span><span class="type">Religious</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>20</b><small>FEB</small></div><div class="card-info"><h3>Losar Festival</h3><p>Tibetan New Year - Monastery me cham dance.</p><div class="meta"><span class="loc">📍 Ladakh, Sikkim</span><span class="state">Himalayan Culture</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+<!-- MARCH -->
+<div class="month-section" id="mar"><div class="month-head"><h2>🎨 March - Rango ka Mahina</h2><div class="line"></div><span class="count">3 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>14</b><small>MAR</small></div><div class="card-info"><h3>Holi - Braj ki Holi</h3><p>Lathmar Holi, Phoolon ki Holi, Widow Holi - Duniya ki sabse alag Holi.</p><div class="meta"><span class="loc">📍 Mathura, Vrindavan, Barsana</span><span class="state">UP</span><span class="type">Color Festival</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>28</b><small>MAR</small></div><div class="card-info"><h3>Khajuraho Dance Festival</h3><p>UNESCO temple ke samne classical dance ka sangam.</p><div class="meta"><span class="loc">📍 Khajuraho</span><span class="state">MP</span><span class="type">Dance</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+<!-- APRIL -->
+<div class="month-section" id="apr"><div class="month-head"><h2>🌾 April - New Year Month</h2><div class="line"></div><span class="count">4 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>14</b><small>APR</small></div><div class="card-info"><h3>Baisakhi / Rongali Bihu / Puthandu</h3><p>Ek din, 4 naam - Punjab me Baisakhi, Assam me Bihu, Tamil me Puthandu, Kerala me Vishu.</p><div class="meta"><span class="loc">📍 Punjab, Assam, TN, Kerala</span><span class="state">Harvest New Year</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+<!-- OCT-NOV-DEC HIGHLIGHTS -->
+<div class="month-section" id="oct"><div class="month-head"><h2>🪔 October - Festival Season</h2><div class="line"></div><span class="count">3 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>02</b><small>OCT</small></div><div class="card-info"><h3>Durga Puja</h3><p>Bengal ka sabse bada carnival - UNESCO Heritage.</p><div class="meta"><span class="loc">📍 Kolkata</span><span class="state">West Bengal</span><span class="type">Carnival</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>21</b><small>OCT</small></div><div class="card-info"><h3>Diwali / Deepawali</h3><p>Ayodhya me 22 lakh diye ka world record.</p><div class="meta"><span class="loc">📍 Ayodhya, Pan India</span><span class="state">Festival of Lights</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>27</b><small>OCT</small></div><div class="card-info"><h3>Hornbill Festival</h3><p>Nagaland ke 17 tribes ka ek saath dance.</p><div class="meta"><span class="loc">📍 Kisama, Nagaland</span><span class="state">Tribal Culture</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+<div class="month-section" id="nov"><div class="month-head"><h2>🐪 November - Mela Month</h2><div class="line"></div><span class="count">2 Festivals</span></div><div class="grid">
+<div class="card"><div class="date"><b>12</b><small>NOV</small></div><div class="card-info"><h3>Pushkar Camel Fair</h3><p>30,000 camels, hot air balloon, desert culture.</p><div class="meta"><span class="loc">📍 Pushkar</span><span class="state">Rajasthan</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+<div class="card"><div class="date"><b>24</b><small>NOV</small></div><div class="card-info"><h3>Dev Deepawali - Varanasi</h3><p>Ganga ke 84 ghat 1 million diyon se jagmagate hain.</p><div class="meta"><span class="loc">📍 Varanasi Ghats</span><span class="state">UP</span></div><button class="add-btn">+ Add to Trip</button></div></div>
+</div></div>
+
+</div>
+
+<script>
+function scrollToMonth(id,btn){
+  document.querySelectorAll('.months button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(id==='all'){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>

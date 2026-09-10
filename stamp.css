@@ -90,6 +90,10 @@
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
+  .header{padding:14px 7%; display:flex; justify-content:space-between; align-items:center; background:white; box-shadow:0 2px 15px rgba(0,0,0,0.06); position:sticky; top:0; z-index:10}
+  .header h2{font-weight:800} .header h2 span{color:#e67e22}
+  .nav a{margin-left:20px; text-decoration:none; color:#334155; font-weight:600; font-size:14px}
+  .nav a.active{color:#e67e22; border-bottom:2px solid #e67e22; padding-bottom:3px}
 
 /* ===== BACKGROUND IMAGES ===== */
 #taj { background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500'); }

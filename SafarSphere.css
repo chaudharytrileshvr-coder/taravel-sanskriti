@@ -36,9 +36,9 @@ header {
 }
 
 .navbar {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
-    padding: 18px 25px;
+    padding: 15px 25px;
 
     display: flex;
     align-items: center;
@@ -49,8 +49,13 @@ header {
 }
 
 .logo {
+    
     font-size: 24px;
     font-weight: bold;
+}
+.logo2 img{
+    height: 100px;
+    width: 100px;
 }
 
 .logo span {
@@ -58,6 +63,8 @@ header {
 }
 
 .nav-links {
+    font-size: larger;
+    font-weight: bolder;
     display: flex;
     list-style: none;
     gap: 30px;
@@ -368,7 +375,7 @@ footer p {
 }
 .logo img{
     height: 90px;
-   width: 90px;
+   width: 300px;
    object-fit: cover;
 }
 .search-wrapper {

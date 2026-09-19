@@ -218,7 +218,7 @@ header {
     min-width: 0;
     max-width: none;
     padding: 20px 15px;
-    
+    cursor: pointer;
     background: #f8fafc;
     border-radius: 18px;
     text-align: center;
@@ -265,7 +265,7 @@ header {
     background: white;
     border-radius: 18px;
     overflow: hidden;
-
+     cursor: pointer;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 
     text-align: left;
